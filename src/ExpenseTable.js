@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Label } from 'react-bootstrap';
+import { Table, Label, Alert } from 'react-bootstrap';
 
 class ExpenseRow extends Component {
   constructor(props) {
@@ -53,7 +53,7 @@ class ExpenseTable extends Component {
     return (
       <div className="expense-table">
         <h2>Expense List</h2>
-        <h5>You can also edit an expense by clicking on it</h5>
+        <Alert>You can also edit an expense by clicking on it</Alert>
         <Table responsive bordered>
           <thead>
             <tr>
