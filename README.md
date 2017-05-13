@@ -10,7 +10,7 @@ A react app that manages expenses
 npm install
 ```
 
-### Run
+#### Run
 ```bash
 npm start
 ```
