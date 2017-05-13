@@ -77,30 +77,36 @@ class ExpenseTable extends Component {
     });
   }
 
-  selectRows(expense) {
-    const expenseRow = <ExpenseRow
-                          expense={expense}
-                          id={expense.id}
-                          key={expense.id}
-                          status={this.state.status}
-                          onEditClick={this.handleEditClick}
-                        />;
-
+  prepareRows() {
+    var expenses = this.props.expenses.slice();
     if(this.state.tab === '1') {
-      return expenseRow;
+      return expenses;
     } else {
-      if(this.state.tab === '2' & expense.status) {
-        return expenseRow;
-      } else if(this.state.tab === '3' & !expense.status) {
-        return expenseRow;
-      }
+      var rows = [];
+      expenses.forEach((expense) => {
+        if(this.state.tab === '2' & expense.status) {
+          rows.push(expense);
+        } else if(this.state.tab === '3' & !expense.status) {
+          rows.push(expense);
+        }
+      });
+      return rows;
     }
   }
 
   render() {
+    var expenses = this.prepareRows();
     var rows = [];
-    this.props.expenses.forEach((expense) => {
-      rows.unshift(this.selectRows(expense));
+    expenses.forEach((expense) => {
+      rows.unshift(
+        <ExpenseRow
+          expense={expense}
+          id={expense.id}
+          key={expense.id}
+          status={this.state.status}
+          onEditClick={this.handleEditClick}
+        />
+      );
     });
 
     return (
