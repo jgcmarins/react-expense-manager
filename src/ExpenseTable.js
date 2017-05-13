@@ -27,6 +27,29 @@ class ExpenseRow extends Component {
   }
 }
 
+class ExpenseNav extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleSelectTab = this.handleSelectTab.bind(this);
+  }
+
+  handleSelectTab(eventKey) {
+    event.preventDefault();
+    this.props.onSelectTab(eventKey);
+  }
+
+  render() {
+    return (
+      <Nav bsStyle="tabs" activeKey={this.props.tab} onSelect={this.handleSelectTab}>
+        <NavItem eventKey="1" title="All"><Label bsStyle="warning">all</Label></NavItem>
+        <NavItem eventKey="2" title="Paid"><Label bsStyle="primary">paid</Label></NavItem>
+        <NavItem eventKey="3" title="NotPaid"><Label bsStyle="danger">not paid</Label></NavItem>
+      </Nav>
+    );
+  }
+}
+
 class ExpenseTable extends Component {
   constructor(props) {
     super(props);
@@ -44,7 +67,6 @@ class ExpenseTable extends Component {
   }
 
   handleSelect(eventKey) {
-    event.preventDefault();
     var status = '';
     if(eventKey !== '1') {
       status = 'status';
@@ -56,33 +78,21 @@ class ExpenseTable extends Component {
   }
 
   selectRows(expense) {
+    const expenseRow = <ExpenseRow
+                          expense={expense}
+                          id={expense.id}
+                          key={expense.id}
+                          status={this.state.status}
+                          onEditClick={this.handleEditClick}
+                        />;
+
     if(this.state.tab === '1') {
-      return (<ExpenseRow
-                expense={expense}
-                id={expense.id}
-                key={expense.id}
-                onEditClick={this.handleEditClick}
-              />
-      );
+      return expenseRow;
     } else {
       if(this.state.tab === '2' & expense.status) {
-        return (<ExpenseRow
-                  expense={expense}
-                  id={expense.id}
-                  key={expense.id}
-                  status={this.state.status}
-                  onEditClick={this.handleEditClick}
-                />
-        );
+        return expenseRow;
       } else if(this.state.tab === '3' & !expense.status) {
-        return (<ExpenseRow
-                  expense={expense}
-                  id={expense.id}
-                  key={expense.id}
-                  status={this.state.status}
-                  onEditClick={this.handleEditClick}
-                />
-        );
+        return expenseRow;
       }
     }
   }
@@ -90,7 +100,7 @@ class ExpenseTable extends Component {
   render() {
     var rows = [];
     this.props.expenses.forEach((expense) => {
-      rows.push(this.selectRows(expense));
+      rows.unshift(this.selectRows(expense));
     });
 
     return (
@@ -98,11 +108,10 @@ class ExpenseTable extends Component {
         <h3>Expense List</h3>
         <Alert>You can also edit an expense by clicking on it</Alert>
 
-        <Nav bsStyle="tabs" activeKey={this.state.tab} onSelect={this.handleSelect}>
-          <NavItem eventKey="1" title="All"><Label bsStyle="warning">all</Label></NavItem>
-          <NavItem eventKey="2" title="Paid"><Label bsStyle="primary">paid</Label></NavItem>
-          <NavItem eventKey="3" title="NotPaid"><Label bsStyle="danger">not paid</Label></NavItem>
-        </Nav>
+        <ExpenseNav
+          tab={this.state.tab}
+          onSelectTab={this.handleSelect}
+        />
 
         <Table responsive bordered>
           <thead>
