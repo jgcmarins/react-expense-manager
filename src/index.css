@@ -4,6 +4,10 @@ body {
   font-family: sans-serif;
 }
 
+.status {
+  display: none;
+}
+
 .github {
   text-align: center;
 }
