@@ -131,6 +131,13 @@ class ExpenseManager extends Component {
               />
             </Col>
           </div>
+          <div className="row">
+            <Col md={12}>
+              <div className="github">
+                <a className="github-button" href="https://github.com/jgcmarins/react-expense-manager" data-size="large" data-show-count="true" aria-label="Star jgcmarins/react-expense-manager on GitHub">Star</a>
+              </div>
+            </Col>
+          </div>
         </div>
       </div>
     );

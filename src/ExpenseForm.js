@@ -55,7 +55,7 @@ class ExpenseForm extends Component {
   render() {
     return (
       <div className="expense-form">
-        <h2>Expense Info</h2>
+        <h3>Expense Info</h3>
         <form onSubmit={this.handleFormSubmit}>
           <FormGroup
             controlId="description"
@@ -101,6 +101,7 @@ class ExpenseForm extends Component {
           </Button>
 
         </form>
+
       </div>
     );
   }

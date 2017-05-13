@@ -52,7 +52,7 @@ class ExpenseTable extends Component {
 
     return (
       <div className="expense-table">
-        <h2>Expense List</h2>
+        <h3>Expense List</h3>
         <Alert>You can also edit an expense by clicking on it</Alert>
         <Table responsive bordered>
           <thead>
