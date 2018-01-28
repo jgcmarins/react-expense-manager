@@ -2,7 +2,7 @@
 A react app that manages expenses
 
 ## Live demo at
-#### [http://jgcmarins.xyz/react-expense-manager/](http://jgcmarins.xyz/react-expense-manager/)
+#### [http://joaomarins.com/react-expense-manager/](http://joaomarins.com/react-expense-manager/)
 
 ## Usage
 #### Installation
