@@ -6,13 +6,13 @@
     "bootstrap": "^4.1.2",
     "moment": "^2.18.1",
     "react": "^16.9.0",
-    "react-bootstrap": "^0.31.0",
+    "react-bootstrap": "^0.32.4",
     "react-dom": "^15.5.4",
-    "react-scripts": "^0.9.5"
+    "react-scripts": "^3.1.1"
   },
   "devDependencies": {
     "gh-pages": "^1.0.0",
-    "react-scripts": "0.9.5"
+    "react-scripts": "3.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
